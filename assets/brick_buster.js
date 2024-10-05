@@ -220,7 +220,6 @@ function setup_thing(thing_data) {
 			document.body.removeEventListener("mousemove", on_mousemove)
 			document.body.removeEventListener("touchmove", on_touchmove)
 			check_lines()
-			console.log("Remove")
 		}
 	}
 
@@ -234,8 +233,6 @@ function setup_thing(thing_data) {
 				tbl.style.opacity = "0.3"
 				holding_setup_done = true
 			}
-
-			console.log(tbl.style.left, tbl.style.top)
 
 			let offset_x = tbl.offsetLeft-grid_table.offsetLeft
 			let offset_y = tbl.offsetTop-grid_table.offsetTop
