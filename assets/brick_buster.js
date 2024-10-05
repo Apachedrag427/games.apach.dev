@@ -182,6 +182,10 @@ function setup_thing(thing_data) {
 		holding = true
 	}
 
+	function on_touchstart(ev) {
+		on_mousedown(ev.targetTouches[0])
+	}
+
 	function on_mouseup(ev) {
 		tbl.style.position = ""
 		tbl.style.left = ""
@@ -210,8 +214,11 @@ function setup_thing(thing_data) {
 			}
 			thing.remove()
 			tbl.removeEventListener("mousedown", on_mousedown)
+			tbl.removeEventListener("touchstart", on_touchstart)
 			document.body.removeEventListener("mouseup", on_mouseup)
+			document.body.removeEventListener("touchend", on_mouseup)
 			document.body.removeEventListener("mousemove", on_mousemove)
+			document.body.removeEventListener("touchmove", on_touchmove)
 			check_lines()
 			console.log("Remove")
 		}
@@ -227,6 +234,8 @@ function setup_thing(thing_data) {
 				tbl.style.opacity = "0.3"
 				holding_setup_done = true
 			}
+
+			console.log(tbl.style.left, tbl.style.top)
 
 			let offset_x = tbl.offsetLeft-grid_table.offsetLeft
 			let offset_y = tbl.offsetTop-grid_table.offsetTop
@@ -290,9 +299,16 @@ function setup_thing(thing_data) {
 		}
 	}
 
+	function on_touchmove(ev) {
+		on_mousemove(ev.targetTouches[0])
+	}
+
 	tbl.addEventListener("mousedown", on_mousedown)
+	tbl.addEventListener("touchstart", on_touchstart)
 	document.body.addEventListener("mouseup", on_mouseup)
+	document.body.addEventListener("touchend", on_mouseup)
 	document.body.addEventListener("mousemove", on_mousemove)
+	document.body.addEventListener("touchmove", on_touchmove)
 
 	return res
 }
