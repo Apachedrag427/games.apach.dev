@@ -42,6 +42,112 @@ let things = [
 		]
 	},
 	{
+		height: 3,
+		width: 3,
+		color: "blue",
+		cells: [
+			[0, 0, 1],
+			[0, 0, 1],
+			[1, 1, 1]
+		]
+	},
+	{
+		height: 3,
+		width: 3,
+		color: "blue",
+		cells: [
+			[1, 1, 1],
+			[1, 0, 0],
+			[1, 0, 0]
+		]
+	},
+	{
+		height: 3,
+		width: 3,
+		color: "blue",
+		cells: [
+			[1, 1, 1],
+			[0, 0, 1],
+			[0, 0, 1]
+		]
+	},
+	{
+		height: 3,
+		width: 2,
+		color: "green",
+		cells: [
+			[1, 0],
+			[1, 0],
+			[1, 1]
+		]
+	},
+	{
+		height: 3,
+		width: 2,
+		color: "green",
+		cells: [
+			[0, 1],
+			[0, 1],
+			[1, 1]
+		]
+	},
+	{
+		height: 3,
+		width: 2,
+		color: "green",
+		cells: [
+			[1, 1],
+			[0, 1],
+			[0, 1]
+		]
+	},
+	{
+		height: 3,
+		width: 2,
+		color: "green",
+		cells: [
+			[1, 1],
+			[1, 0],
+			[1, 0]
+		]
+	},
+	{
+		height: 2,
+		width: 3,
+		color: "yellow",
+		cells: [
+			[0, 0, 1],
+			[1, 1, 1],
+		]
+	},
+	{
+		height: 2,
+		width: 3,
+		color: "yellow",
+		cells: [
+			[1, 0, 0],
+			[1, 1, 1],
+		]
+	},
+	{
+		height: 2,
+		width: 3,
+		color: "yellow",
+		cells: [
+			[1, 1, 1],
+			[0, 0, 1],
+		]
+	},
+	{
+		height: 2,
+		width: 3,
+		color: "yellow",
+		cells: [
+			[1, 1, 1],
+			[1, 0, 0],
+		]
+	},
+	{
 		height: 5,
 		width: 1,
 		color: "flamingo",
@@ -62,12 +168,30 @@ let things = [
 		]
 	},
 	{
+		height: 3,
+		width: 1,
+		color: "peach",
+		cells: [
+			[1],
+			[1],
+			[1]
+		]
+	},
+	{
+		height: 1,
+		width: 3,
+		color: "peach",
+		cells: [
+			[1, 1, 1]
+		]
+	},
+	{
 		height: 2,
 		width: 2,
 		color: "sky",
 		cells: [
 			[1, 1],
-			[2, 2]
+			[1, 1]
 		]
 	},
 	{
@@ -77,6 +201,26 @@ let things = [
 		cells: [
 			[1, 1, 1],
 			[1, 1, 1],
+			[1, 1, 1]
+		]
+	},
+	{
+		height: 3,
+		width: 3,
+		color: "mauve",
+		cells: [
+			[1, 1, 1],
+			[0, 1, 0],
+			[0, 1, 0]
+		]
+	},
+	{
+		height: 3,
+		width: 3,
+		color: "mauve",
+		cells: [
+			[0, 1, 0],
+			[0, 1, 0],
 			[1, 1, 1]
 		]
 	}
@@ -311,7 +455,7 @@ function setup_thing(thing_data) {
 }
 
 function make_new_things() {
-	for (let i = 0; i < 3; i++) {
+	for (let i = 0; i < 4; i++) {
 		let thing_to_make = Math.round(Math.random()*(things.length-1))
 		let thing_data = things[thing_to_make]
 		let res = setup_thing(thing_data)
