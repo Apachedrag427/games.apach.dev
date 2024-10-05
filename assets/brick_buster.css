@@ -1,0 +1,106 @@
+@import url(catppuccin-mocha.css);
+
+:root {
+	background-color: var(--base);
+	overflow: hidden;
+	position: relative;
+	user-select: none;
+}
+
+.grid {
+	border-spacing: 0px;
+}
+.center {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.row-holder {
+	width: 100%;
+
+	margin-top: 2em;
+	margin-bottom: 2em;
+
+	display: flex;
+	flex-flow: row nowrap;
+	align-content: center;
+	justify-content: space-evenly;
+}
+
+.option-holder {
+	margin-top: 5em;
+}
+
+.cell {
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--surface0);
+}
+.highlighted-cell {
+	border: 1px solid var(--text)
+}
+
+@keyframes cleared {
+	0% {
+		background-color: var(--text);
+	}
+	40% {
+		background-color: var(--text)
+	}
+	100% {
+		background-color: var(--mantle)
+	}
+}
+.cleared-cell {
+	animation-name: cleared;
+	animation-duration: 750ms;
+}
+
+.empty-cell {
+	background-color: var(--mantle);
+}
+
+.lavender {
+	background-color: var(--lavender);
+}
+.blue {
+	background-color: var(--blue);
+}
+.sapphire {
+	background-color: var(--sapphire);
+}
+.sky {
+	background-color: var(--sky);
+}
+.teal {
+	background-color: var(--teal);
+}
+.green {
+	background-color: var(--green);
+}
+.yellow {
+	background-color: var(--yellow);
+}
+.peach {
+	background-color: var(--peach);
+}
+.maroon {
+	background-color: var(--maroon);
+}
+.red {
+	background-color: var(--red);
+}
+.mauve {
+	background-color: var(--mauve);
+}
+.pink {
+	background-color: var(--pink);
+}
+.flamingo {
+	background-color: var(--flamingo);
+}
+.rosewater {
+	background-color: var(--rosewater);
+}
