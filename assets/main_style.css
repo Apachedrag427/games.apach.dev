@@ -7,4 +7,9 @@
 
 a {
 	color: var(--red);
+	transition: 0.2s;
+}
+
+a:hover {
+	color: var(--mauve);
 }
