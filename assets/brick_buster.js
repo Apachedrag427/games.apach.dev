@@ -274,6 +274,30 @@ function check_lines() {
 	}
 }
 
+function get_valid_positions(thing_data) {
+	let valid_positions = []
+	for (let grid_x = 0; grid_x < grid_size[0]-thing_data.width+1; grid_x++) {
+		for (let grid_y = 0; grid_y < grid_size[1]-thing_data.height+1; grid_y++) {
+			let valid = true
+			for (let x = 0; x < thing_data.width; x++) {
+				for (let y = 0; y < thing_data.height; y++) {
+					if (thing_data.cells[y][x] && !grid[grid_x+x][grid_y+y].classList.contains("empty-cell")) {
+						valid = false
+						break
+					}
+				}
+				if (!valid)
+					break
+			}
+
+			if (valid) {
+				valid_positions.push([grid_x, grid_y])
+			}
+		}
+	}
+	return valid_positions
+}
+
 function make_thing(thing) {
 	let outer_table = document.createElement("table")
 	outer_table.classList.add("grid")
@@ -320,6 +344,9 @@ function setup_thing(thing_data) {
 	let last_valid_y
 	let old_highlighted = []
 
+	let light_cells = false
+	let old_light = []
+
 	function on_mousedown(ev) {
 		rel_x = ev.clientX - tbl.offsetLeft
 		rel_y = ev.clientY - tbl.offsetTop
@@ -339,6 +366,10 @@ function setup_thing(thing_data) {
 		holding_setup_done = false
 		for (cell of old_highlighted) {
 			cell.classList.remove("highlighted-cell")
+		}
+		light_cells = false
+		for (cell of old_light) {
+			cell.classList.remove("light-cell")
 		}
 		old_highlighted.splice(0, old_highlighted.length)
 
@@ -369,6 +400,26 @@ function setup_thing(thing_data) {
 
 	function on_mousemove(ev) {
 		if (holding) {
+			if (!light_cells) {
+				let positions = get_valid_positions(thing_data)
+				for (pos of positions) {
+					let p = pos
+					let grid_x = p[0]
+					let grid_y = p[1]
+
+					for (let x = 0; x < thing_data.width; x++) {
+						for (let y = 0; y < thing_data.height; y++) {
+							let cell = grid[grid_x+x][grid_y+y]
+							if (thing_data.cells[y][x] && !cell.classList.contains("light-cell")) {
+								cell.classList.add("light-cell")
+								old_light.push(cell)
+							}
+						}
+					}
+				}
+				light_cells = true
+			}
+
 			tbl.style.left = `${ev.clientX-rel_x}px`
 			tbl.style.top = `${ev.clientY-rel_y}px`
 
