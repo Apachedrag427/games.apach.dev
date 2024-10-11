@@ -2,7 +2,7 @@
 	"name": "games.apach.dev",
 	"version": "1.0.0",
 	"scripts": {
-		"build": "cd site && tsc -p ../tsconfig.json && uglifyjs -mc -o ./snake/script.min.js ./snake/script.js && uglifyjs -mc -o ./brick_buster/script.min.js ./brick_buster/script.js && lightningcss --minify snake/style.css -o snake/style.min.css && lightningcss --minify brick_buster/style.css -o brick_buster/style.min.css",
+		"build": "cd site && tsc -p ../tsconfig.json && uglifyjs -mc -o ./snake/script.min.js ./snake/script.js && uglifyjs -mc -o ./brick_buster/script.min.js ./brick_buster/script.js && lightningcss --minify snake/style.css -o snake/style.min.css && lightningcss --minify brick_buster/style.css -o brick_buster/style.min.css && lightningcss --minify assets/catppuccin-mocha.css -o assets/catppuccin-mocha.min.css && lightningcss --minify assets/main-style.css -o assets/main-style.min.css",
 		"watch-build": "nodemon --exec npm run build --watch . --ext ts,css --ignore *.min.*"
 	},
 	"dependencies": {
