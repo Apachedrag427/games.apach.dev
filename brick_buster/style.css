@@ -39,7 +39,11 @@
 	border: 1px solid var(--surface0);
 }
 .highlighted-cell {
-	border: 1px solid var(--text)
+	border: 1px solid var(--text) !important;
+}
+.light-cell {
+	background-color: var(--surface0) !important;
+	border: 1px solid var(--surface1);
 }
 
 @keyframes cleared {
