@@ -1,18 +1,21 @@
-let grid_size = 30
+let grid_size: number = 30
 
-let grid_reference = []
-function get_cell(x, y) {
+let grid_reference: HTMLTableCellElement[][] = []
+function get_cell(x: number, y: number) {
 	return grid_reference[y][x]
 }
-function get_cell_tuple(tup) {
+function get_cell_tuple(tup: number[]) {
 	return get_cell(tup[0], tup[1])
 }
 
-function copy_tuple(t) {
+function copy_tuple(t: number[]) {
 	return [t[0], t[1]]
 }
 
 let table = document.getElementById("grid")
+if (table == null) {
+	throw new Error("Unable to get grid")
+}
 
 for (let y = 0; y < grid_size; y++) {
 	let row = document.createElement("tr")
@@ -30,21 +33,20 @@ for (let y = 0; y < grid_size; y++) {
 
 let body = [[Math.floor(grid_size / 2), Math.floor(grid_size / 2)]]
 
-let food = []
+let food: number[][] = []
 
 function make_food() {
-	console.trace("Making food")
 	let good_spot = false
 
-	let x;
-	let y;
+	let x = -1
+	let y = -1
 
 	while (!good_spot) {
 		let new_x = Math.round(Math.random()*(grid_size-1))
 		let new_y = Math.round(Math.random()*(grid_size-1))
 
 		let ok = true
-		for (b of body) {
+		for (let b of body) {
 			if (b[0] == new_x && b[1] == new_y) {
 				ok = false
 				break
@@ -52,7 +54,7 @@ function make_food() {
 		}
 
 		if (ok) {
-			for (f of food) {
+			for (let f of food) {
 				if (f[0] == new_x && f[1] == new_y) {
 					ok = false
 					break
@@ -65,10 +67,11 @@ function make_food() {
 			y = new_y
 			break
 		}
-		console.log("Bad food spot, making new one")
 	}
 
-	console.log(x, y)
+	if (x < 0 || y < 0) {
+		throw new Error("Should be unreachable")
+	}
 
 	let food_tuple = [x, y]
 
@@ -156,7 +159,6 @@ function step() {
 			body[body.length] = copy_tuple(body[body.length-1])
 			make_food()
 			food.splice(i, 1)
-			console.log(i, f[0], f[1])
 		}
 	}
 }
@@ -173,9 +175,12 @@ document.onkeydown = (e) => {
 	}
 }
 
-for (let i = 0; i < 20; i++)
+for (let i = 0; i < 10; i++)
 	make_food()
 
 setInterval(() => {
 	step()
 }, 100)
+
+
+export {};

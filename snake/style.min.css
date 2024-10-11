@@ -1,0 +1,1 @@
+@import "../assets/catppuccin-mocha.min.css";:root{background-color:var(--base)}.cell{width:15px;height:15px;transition:all 50ms cubic-bezier(.23,1,.32,1)}.empty-cell{background-color:var(--crust)}.snake-cell{background-color:var(--green);border-radius:15%}.food-cell{background-color:var(--red);border-radius:100%}

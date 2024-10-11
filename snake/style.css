@@ -1,4 +1,4 @@
-@import url(catppuccin-mocha.css);
+@import url(../assets/catppuccin-mocha.min.css);
 
 :root {
 	background-color: var(--base);
