@@ -364,11 +364,11 @@ function setup_thing(thing_data) {
 		tbl.style.opacity = "1"
 		holding = false
 		holding_setup_done = false
-		for (cell of old_highlighted) {
+		for (let cell of old_highlighted) {
 			cell.classList.remove("highlighted-cell")
 		}
 		light_cells = false
-		for (cell of old_light) {
+		for (let cell of old_light) {
 			cell.classList.remove("light-cell")
 		}
 		old_highlighted.splice(0, old_highlighted.length)
@@ -402,10 +402,9 @@ function setup_thing(thing_data) {
 		if (holding) {
 			if (!light_cells) {
 				let positions = get_valid_positions(thing_data)
-				for (pos of positions) {
-					let p = pos
-					let grid_x = p[0]
-					let grid_y = p[1]
+				for (let pos of positions) {
+					let grid_x = pos[0]
+					let grid_y = pos[1]
 
 					for (let x = 0; x < thing_data.width; x++) {
 						for (let y = 0; y < thing_data.height; y++) {
@@ -448,7 +447,7 @@ function setup_thing(thing_data) {
 				last_valid_x = grid_x
 				last_valid_y = grid_y
 
-				for (cell of old_highlighted) {
+				for (let cell of old_highlighted) {
 					cell.classList.remove("highlighted-cell")
 				}
 				old_highlighted.splice(0, old_highlighted.length)
@@ -481,7 +480,7 @@ function setup_thing(thing_data) {
 				|| grid_y < 0
 				|| grid_y+thing_data.height-1 >= grid_size[1]
 			) {
-				for (cell of old_highlighted) {
+				for (let cell of old_highlighted) {
 					cell.classList.remove("highlighted-cell")
 				}
 				old_highlighted.splice(0, old_highlighted.length)
